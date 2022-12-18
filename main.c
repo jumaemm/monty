@@ -1,7 +1,7 @@
 #include "monty.h"
 #define  _POSIX_C_SOURCE 200809L
 
-bus_t bus  = {NULL, NULL, NULL, 0};
+bus_t bus  = {NULL, NULL, NULL, 0, 0};
 /**
  * main - main program entry point
  * @argc: count of args
