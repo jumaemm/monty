@@ -9,9 +9,10 @@
  */
 void _pstr(stack_t **stack, unsigned int line_count)
 {
-	(void) line_count;
+
 	stack_t *current = *stack;
 
+	(void) line_count;
 	while (current)
 	{
 		if (current->n <= 0 || current->n > 127)
