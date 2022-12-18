@@ -15,11 +15,18 @@ void _push(stack_t **stack, unsigned int line_count)
 		exit(EXIT_FAILURE);
 	}
 
-	if (bus.status == 1)
+	if (bus.lifi == 1)
 	{
 		if (!add_node(stack, atoi(n)))
 		{
 			free_stack(*stack);
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		if (!queue_node(stack, atoi(n)))
+		{
 			exit(EXIT_FAILURE);
 		}
 	}
