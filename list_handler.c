@@ -67,3 +67,46 @@ void free_stack(stack_t *stack)
 		}
 	}
 }
+
+/**
+ * queue_node - adds a node to a stack_t stack in FIFO
+ * @stack: pointer to stack
+ * @n: number of the node
+ *
+ * Return: newly created node, if memory allocation fails, the function will
+ * return NULL.
+ */
+stack_t *queue_node(stack_t **stack, const int n)
+{
+	stack_t *new_node = malloc(sizeof(stack_t));
+	stack_t *current_node = *stack;
+
+	if (!new_node)
+	{
+		free(new_node);
+		return (NULL);
+	}
+	new_node->n = n;
+
+	if (!*stack)
+	{
+		new_node->next = NULL;
+		new_node->prev = NULL;
+		*stack = new_node;
+		return (new_node);
+	}
+
+	while (current_node)
+	{
+		if (!current_node->next)
+		{
+			new_node->next = NULL;
+			new_node->prev = current_node;
+			current_node->next = new_node;
+			break;
+		}
+		current_node = current_node->next;
+	}
+
+	return (new_node);
+}
