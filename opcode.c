@@ -20,11 +20,29 @@ void opcode(stack_t **stack, char *str, unsigned int line_count, FILE *file)
 		{"add", _add},
 		{"swap", _swap},
 		{"nop", _nop},
+		{"rotr", _rotr},
+		{"sub", _sub},
+		{"mul", _mul},
+		{"mod", _mod},
+		{"rotl", _rotl},
+		{"pstr", _pstr},
+		{"pchar", _pchar},
+		{"div", _div},
 		{NULL, NULL}
 	};
 
 	bus.status = 1;
 
+	if (!strcmp(str, "stack"))
+	{
+		bus.lifi = 1;
+		return;
+	}
+	if (!strcmp(str, "queue"))
+	{
+		bus.lifi = 0;
+		return;
+	}
 	while (op[i].opcode)
 	{
 		if (strcmp(op[i].opcode, str) == 0)
